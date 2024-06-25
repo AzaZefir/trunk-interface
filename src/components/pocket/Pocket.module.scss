@@ -1,0 +1,18 @@
+@mixin dflex {
+  display: flex;
+}
+
+.pocket {
+  grid-area: pocket;
+  .pocketHeader {
+    @include dflex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .pocketSlots {
+    display: grid;
+    grid-template-columns: repeat(5, 6.875rem); /* Adjust as needed */
+    grid-auto-rows: 6.875rem; /* Adjust as needed */
+  }
+}
