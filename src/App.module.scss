@@ -1,0 +1,52 @@
+$gold: rgba(201, 157, 62, 1);
+$grey: rgba(57, 57, 57, 1);
+$white: rgba(255, 255, 255, 1);
+
+@mixin fonts-weight-700 {
+  font-weight: 700;
+  font-style: italic;
+}
+
+@mixin fonts-size-15 {
+  font-size: 15px;
+  font-style: italic;
+  line-height: 18.15px;
+  text-align: left;
+}
+
+h2 {
+  @include fonts-weight-700;
+  margin: 0;
+  font-size: 40px;
+  line-height: 48.41px;
+  color: $gold;
+}
+
+p {
+  @include fonts-weight-700;
+  margin: 0;
+  font-size: 30px;
+  line-height: 36.31px;
+  color: $grey;
+}
+
+span,
+button {
+  @include fonts-size-15;
+  font-weight: 500;
+  color: $white;
+  cursor: pointer;
+}
+
+strong {
+  @include fonts-size-15;
+  font-weight: 900;
+  color: $gold;
+}
+
+.wrapper {
+  background-image: url("https://res.cloudinary.com/drdqjr8r6/image/upload/v1719289577/bg_fqaysx.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
