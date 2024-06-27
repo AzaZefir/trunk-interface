@@ -25,6 +25,15 @@ const InventorySlot = ({ index, section, specialIndexes }) => {
           src={item.data}
           alt={item.name}
           className={style.itemImage}
+          style={{
+            width: `${
+              item?.width !== 2 && item?.height !== 2
+                ? "35px"
+                : item?.height === 2
+                ? "60px"
+                : ""
+            }`,
+          }}
         />
       )}
     </div>
