@@ -8,7 +8,7 @@ $white: rgba(255, 255, 255, 1);
 }
 
 @mixin fonts-size-15 {
-  font-size: 15px;
+  font-size: 12px;
   font-style: italic;
   line-height: 18.15px;
   text-align: left;
@@ -17,7 +17,7 @@ $white: rgba(255, 255, 255, 1);
 h2 {
   @include fonts-weight-700;
   margin: 0;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 48.41px;
   color: $gold;
 }
@@ -25,7 +25,7 @@ h2 {
 p {
   @include fonts-weight-700;
   margin: 0;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 36.31px;
   color: $grey;
 }
@@ -45,8 +45,9 @@ strong {
 }
 
 .wrapper {
+  height: 100vh;
   background-image: url("https://res.cloudinary.com/drdqjr8r6/image/upload/v1719289577/bg_fqaysx.png");
-  background-position: center;
+  background-position: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }

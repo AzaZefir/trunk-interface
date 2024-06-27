@@ -7,14 +7,13 @@
 .inventoryWrapper {
   @include dflex;
   height: 100%;
-  padding: 122px 0 126px;
   .inventoryGridWrapper {
     display: grid;
-    grid-template-columns: 34.375rem 41.25rem;
+    grid-template-columns: 400px 480px;
     grid-template-areas:
       "pocket trunk"
       "bag trunk";
-    column-gap: 148px;
-    row-gap: 66px;
+    column-gap: 120px;
+    row-gap: 30px;
   }
 }

@@ -24,7 +24,7 @@
   }
   .pocketSlots {
     display: grid;
-    grid-template-columns: repeat(5, 6.875rem); /* Adjust as needed */
-    grid-auto-rows: 6.875rem; /* Adjust as needed */
+    grid-template-columns: repeat(5, 80px); /* Adjust as needed */
+    grid-auto-rows: 80px; /* Adjust as needed */
   }
 }
