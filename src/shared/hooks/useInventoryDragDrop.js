@@ -9,12 +9,13 @@ export const useInventoryDragDrop = (index, section, item, specialIndexes) => {
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.INVENTORY_SLOT,
     item: {
-      id: item?.ItemId,
-      name: item?.Name,
-      quantity: item?.Quantity,
-      data: item?.Data,
-      width: item?.Width,
-      height: item?.Height,
+      itemId: item?.itemId,
+      name: item?.name,
+      quantity: item?.quantity,
+      data: item?.data,
+      width: item?.width,
+      height: item?.height,
+      weight: item?.weight,
       section: section,
       index: index,
     },
@@ -34,14 +35,16 @@ export const useInventoryDragDrop = (index, section, item, specialIndexes) => {
   });
 
   const slotStyle = {
-    gridColumnEnd: `span ${item?.Width || 1}`,
-    width: `${item?.Width === 2 ? "initial" : "6.875rem"}`,
-    height: `${item?.Height === 2 ? "initial" : "6.875rem"}`,
-    gridRowEnd: `span ${item?.Height || 1}`,
+    gridColumnEnd: `span ${item?.width || 1}`,
+    width: `${item?.width === 2 ? "initial" : "6.875rem"}`,
+    height: `${item?.height === 2 ? "initial" : "6.875rem"}`,
+    gridRowEnd: `span ${item?.height || 1}`,
     cursor: `${item ? "pointer" : ""}`,
     opacity: isDragging ? 0.5 : 1,
     backgroundColor: isOver ? "rgba(57, 57, 57, 1)" : "transparent",
-    ...(specialIndexes?.includes(index) && { backgroundColor: "rgba(201, 157, 62, 0.4)" }),
+    ...(specialIndexes?.includes(index) && {
+      backgroundColor: "rgba(201, 157, 62, 0.4)",
+    }),
   };
 
   return {

@@ -5,11 +5,13 @@ import style from "./Bag.module.scss";
 import InventorySlot from "../../shared/components/inventorySlot/InventorySlot";
 
 import { InventoryContext } from "../../app/context/InventoryContext";
-import { calculateTotalSlots } from "../../utils/InventoryUtils";
+import { calculateTotalSlots } from "../../utils/CalculateTotalSlots";
 
 const Bag = () => {
   const { inventoryData, moveItem } = useContext(InventoryContext);
   const bagData = inventoryData.bag;
+  const bagWeight = inventoryData.weight.bag;
+  const bagLimit = inventoryData.limit.bag;
 
   const handleDrop = (item, targetIndex) => {
     moveItem("bag", "bag", item, targetIndex);
@@ -17,13 +19,18 @@ const Bag = () => {
 
   const totalSlots = calculateTotalSlots({ data: bagData, initialTotal: 20 });
 
-  const specialIndexes = [4,9];
+  const specialIndexes = [4, 9];
 
   return (
     <div className={style.bag}>
       <div className={style.bagHeader}>
         <h2>Портфель</h2>
-        <p>3.5/25 кг</p>
+        <p className={style.weightInfo}>
+          {bagWeight.toFixed(1)}/{bagLimit} кг
+          <span className={style.errorText}>
+            {inventoryData.weightError.bag}
+          </span>
+        </p>
       </div>
       <div className={style.bagSlots}>
         {Array.from({ length: totalSlots }).map((_, index) => (

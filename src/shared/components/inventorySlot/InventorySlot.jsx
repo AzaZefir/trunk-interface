@@ -22,8 +22,8 @@ const InventorySlot = ({ index, section, specialIndexes }) => {
       {item && (
         <img
           ref={dragRef}
-          src={item.Data}
-          alt={item.Name}
+          src={item.data}
+          alt={item.name}
           className={style.itemImage}
         />
       )}

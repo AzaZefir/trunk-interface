@@ -5,17 +5,22 @@ import style from "./Pocket.module.scss";
 import InventorySlot from "../../shared/components/inventorySlot/InventorySlot";
 
 import { InventoryContext } from "../../app/context/InventoryContext";
-import { calculateTotalSlots } from "../../utils/InventoryUtils";
+import { calculateTotalSlots } from "../../utils/CalculateTotalSlots";
 
 const Pocket = () => {
   const { inventoryData, moveItem } = useContext(InventoryContext);
   const pocketData = inventoryData.pocket;
+  const pocketWeight = inventoryData.weight.pocket;
+  const pocketLimit = inventoryData.limit.pocket;
 
   const handleDrop = (item, targetIndex) => {
     moveItem("pocket", "pocket", item, targetIndex);
   };
 
-  const totalSlots = calculateTotalSlots({ data:pocketData, initialTotal: 10 });
+  const totalSlots = calculateTotalSlots({
+    data: pocketData,
+    initialTotal: 10,
+  });
 
   const specialIndexes = [4];
 
@@ -23,7 +28,17 @@ const Pocket = () => {
     <div className={style.pocket}>
       <div className={style.pocketHeader}>
         <h2>Карман</h2>
-        <p>0.2/8 кг</p>
+        <p
+          className={style.weightInfo}
+          style={{
+            color: `${inventoryData.weightError.pocket ? "salmon" : ""}`,
+          }}
+        >
+          {pocketWeight.toFixed(1)}/{pocketLimit} кг
+          <span className={style.errorText}>
+            {inventoryData.weightError.pocket}
+          </span>
+        </p>
       </div>
       <div className={style.pocketSlots}>
         {Array.from({ length: totalSlots }).map((_, index) => (

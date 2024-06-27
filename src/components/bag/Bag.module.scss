@@ -9,10 +9,22 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 5px;
+    .weightInfo {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      .errorText {
+        position: absolute;
+        font-size: 10px;
+        color: salmon;
+        bottom: -10px;
+        left: 0;
+      }
+    }
   }
   .bagSlots {
     display: grid;
     grid-template-columns: repeat(5, 6.875rem); /* Adjust as needed */
-    grid-auto-rows: 6.875rem; 
+    grid-auto-rows: 6.875rem;
   }
 }

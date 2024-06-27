@@ -9,6 +9,18 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 5px;
+    .weightInfo {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      .errorText {
+        position: absolute;
+        font-size: 10px;
+        color: salmon;
+        bottom: -10px;
+        left: 0;
+      }
+    }
   }
   .pocketSlots {
     display: grid;
