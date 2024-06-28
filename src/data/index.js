@@ -11,7 +11,7 @@ export const inventoryData = [
   {
     itemId: 2,
     name: "Hummer",
-    quantity: 2,
+    quantity: 1,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719313134/Group_154_lwbwcz.svg",
     width: 1,
     height: 1,
@@ -20,7 +20,7 @@ export const inventoryData = [
   {
     itemId: 3,
     name: "Gun",
-    quantity: 2,
+    quantity: 1,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719331871/pngwing.com_1_srbpgs.svg",
     width: 2,
     height: 1,
@@ -29,7 +29,7 @@ export const inventoryData = [
   {
     itemId: 4,
     name: "cake",
-    quantity: 2,
+    quantity: 3,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316608/cupcake-svgrepo-com_xr58le.svg",
     width: 1,
     height: 1,
@@ -38,7 +38,7 @@ export const inventoryData = [
   {
     itemId: 5,
     name: "cherry",
-    quantity: 2,
+    quantity: 3,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316607/cherry-svgrepo-com_repiyp.svg",
     width: 1,
     height: 1,
@@ -47,7 +47,7 @@ export const inventoryData = [
   {
     itemId: 6,
     name: "salad",
-    quantity: 2,
+    quantity: 3,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316606/salad-svgrepo-com_sqlbbo.svg",
     width: 1,
     height: 1,
@@ -75,6 +75,15 @@ export const bagData = [
     height: 1,
     weight: 0.5,
   },
+  {
+    itemId: 15,
+    name: "knife",
+    quantity: 1,
+    data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316869/knife-svgrepo-com_uyiv2r.svg",
+    width: 1,
+    height: 1,
+    weight: 0.5,
+  },
 ];
 
 export const trunkData = [
@@ -90,7 +99,7 @@ export const trunkData = [
   {
     itemId: 11,
     name: "Hummer",
-    quantity: 2,
+    quantity: 1,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719313134/Group_154_lwbwcz.svg",
     width: 1,
     height: 1,
@@ -99,7 +108,7 @@ export const trunkData = [
   {
     itemId: 12,
     name: "cake",
-    quantity: 2,
+    quantity: 3,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316608/cupcake-svgrepo-com_xr58le.svg",
     width: 1,
     height: 1,
@@ -108,16 +117,16 @@ export const trunkData = [
   {
     itemId: 13,
     name: "cherry",
-    quantity: 2,
+    quantity: 3,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316607/cherry-svgrepo-com_repiyp.svg",
     width: 1,
     height: 1,
     weight: 2,
   },
   {
-    itemId: 8,
+    itemId: 14,
     name: "fuel",
-    quantity: 2,
+    quantity: 1,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719317984/fuel-svgrepo-com_cy34me.svg",
     width: 1,
     height: 2,
