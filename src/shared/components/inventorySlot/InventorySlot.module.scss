@@ -4,6 +4,16 @@
   justify-content: center;
 }
 
+@mixin qtyStyle {
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 17.58px;
+  text-align: left;
+}
+
 .inventorySlot {
   @include dflex;
   position: relative;
@@ -11,7 +21,18 @@
   border: 1px solid rgba(48, 48, 48, 1);
   background: rgba(22, 22, 22, 0.76);
   backdrop-filter: blur(9px);
-  .itemImage{
+  .itemImage {
     overflow: hidden;
+  }
+
+  .inventoryQtyChange {
+    @include qtyStyle;
+    top: 5px;
+    right: 5px;
+  }
+  .inventoryQtyShow {
+    @include qtyStyle;
+    bottom: 5px;
+    right: 5px;
   }
 }
