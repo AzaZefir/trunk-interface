@@ -18,6 +18,7 @@ export const useInventoryDragDrop = (index, section, item, specialIndexes) => {
       weight: item?.weight,
       section: section,
       index: index,
+      type: item?.type,
     },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),

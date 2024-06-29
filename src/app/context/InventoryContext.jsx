@@ -59,50 +59,87 @@ export const InventoryProvider = ({ children }) => {
         (invItem) => invItem?.itemId === item.itemId
       );
 
-      // Если источник и цель совпадают, разрешаем перемещение без проверок веса
-      if (source !== target) {
-        // Если вес больше лимита, устанавливаем сообщение об ошибке и возвращаемся
-        const newWeight = updatedData.weight[target] + (item.weight || 0);
-        if (newWeight > updatedData.limit[target]) {
-          return {
-            ...prevData,
-            weightError: {
-              ...prevData.weightError,
-              [target]: `Вес превышен!`,
-            },
-          };
-        }
+      if (sourceIndex === -1) {
+        return prevData; // Предмет не найден в исходной секции
       }
 
-      // Удаляем сообщение об ошибке, если все в порядке
-      updatedData.weightError = {
-        ...updatedData.weightError,
-        [target]: "",
-      };
-
-      // Удаляем предмет из источника
-      if (sourceIndex !== -1) {
-        sourceData[sourceIndex] = null;
-      }
+      const sourceItem = sourceData[sourceIndex];
+      const targetItemIndex = targetData.findIndex(
+        (invItem) => invItem?.itemId === item.itemId
+      );
 
       // Если в целевой ячейке уже есть предмет, меняем их местами
       const targetItem = targetData[targetIndex];
+
       if (targetItem && sourceIndex !== -1) {
         sourceData[sourceIndex] = targetItem;
+        targetData[targetIndex] = sourceItem;
+      } else {
+        // Проверка веса при перемещении между секциями
+        if (source !== target) {
+          const newWeight = updatedData.weight[target] + (item.weight || 0);
+          if (newWeight > updatedData.limit[target]) {
+            return {
+              ...prevData,
+              weightError: {
+                ...prevData.weightError,
+                [target]: "Вес превышен!",
+              },
+            };
+          }
+
+          updatedData.weightError = {
+            ...updatedData.weightError,
+            [target]: "",
+          };
+
+          // Логика для перемещения между разными секциями
+          if (sourceItem.quantity > 1) {
+            sourceItem.quantity -= 1;
+          } else {
+            sourceData[sourceIndex] = null;
+          }
+
+          if (targetItemIndex !== -1) {
+            targetData[targetItemIndex].quantity += 1;
+          } else {
+            targetData[targetIndex] = {
+              ...item,
+              quantity: 1,
+            };
+          }
+        } else {
+          // Логика для перемещения внутри одной секции
+          if (sourceIndex !== targetIndex) {
+            if (sourceItem.quantity === 3 || sourceItem.quantity === 2) {
+              // Перемещение предмета с quantity === 3 без изменения количества
+              sourceData[sourceIndex] = null;
+              targetData[targetIndex] = {
+                ...item,
+                quantity: sourceItem.quantity,
+              };
+            } else {
+              // Обычное перемещение внутри одной секции
+              if (sourceItem.quantity > 1) {
+                sourceItem.quantity -= 1;
+              } else {
+                sourceData[sourceIndex] = null;
+              }
+
+              if (targetData[targetIndex]) {
+                targetData[targetIndex].quantity += 1;
+              } else {
+                targetData[targetIndex] = {
+                  ...item,
+                  quantity: 1,
+                };
+              }
+            }
+          }
+        }
       }
 
-      // Перемещаем предмет в целевую ячейку
-      targetData[targetIndex] = {
-        ...item,
-        itemId: item.itemId,
-        name: item.name,
-        quantity: item.quantity,
-        data: item.data,
-        width: item.width,
-        height: item.height,
-      };
-
-      updatedData[source] = sourceData;
+      updatedData[source] = sourceData; // Удаление null элементов
       updatedData[target] = targetData;
 
       // Пересчитываем вес
