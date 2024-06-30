@@ -39,8 +39,8 @@ const InventorySlot = ({ index, section, specialIndexes }) => {
       <span className={style.inventoryQtyChange}>
         {item ? `x${item?.quantity}` : ""}
       </span>
-      <span className={style.inventoryQtyShow}>
-        {item ? (item?.type === "food" ? "3" : "1") : ""}
+      <span className={style.inventoryWeight}>
+        {item ? `${item?.weight * item?.quantity}` : ""}
       </span>
     </div>
   );
