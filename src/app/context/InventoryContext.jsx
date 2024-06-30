@@ -11,8 +11,11 @@ export const InventoryContext = createContext();
 export const InventoryProvider = ({ children }) => {
   const [inventoryData, setInventoryData] = useState({
     pocket: initialInventoryData,
+    pocketHidingData: [],
     bag: bagData,
+    bagHidingData: [],
     trunk: trunkData,
+    trunkHidingData: [],
     weight: {
       trunk: 0,
       pocket: 0,
@@ -71,7 +74,29 @@ export const InventoryProvider = ({ children }) => {
       // Если в целевой ячейке уже есть предмет, меняем их местами
       const targetItem = targetData[targetIndex];
 
-      if (targetItem && sourceIndex !== -1) {
+      const hidingPlaceWeight = targetData.reduce(
+        (total, invItem) => total + (invItem?.weight || 0),
+        0
+      );
+
+      if (
+        target === "pocketHidingData" ||
+        target === "bagHidingData" ||
+        target === "trunkHidingData"
+      ) {
+        const newHidingPlaceWeight = hidingPlaceWeight + (item.weight || 0);
+
+        if (newHidingPlaceWeight > 0.5) {
+          alert("В тайник можно положить предметы суммарно не более 0.5кг!");
+          return prevData;
+        }
+      }
+
+      if (
+        targetItem &&
+        sourceIndex !== -1 &&
+        targetItem.name !== sourceItem.name
+      ) {
         sourceData[sourceIndex] = targetItem;
         targetData[targetIndex] = sourceItem;
       } else {

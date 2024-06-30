@@ -6,23 +6,18 @@ import InventorySlot from "../../shared/components/inventorySlot/InventorySlot";
 
 import { InventoryContext } from "../../app/context/InventoryContext";
 import { calculateTotalSlots } from "../../utils/CalculateTotalSlots";
+import HidingPlace from "../../shared/components/hiddingPlace/HidingPlace";
 
 const Pocket = () => {
-  const { inventoryData, moveItem } = useContext(InventoryContext);
+  const { inventoryData } = useContext(InventoryContext);
   const pocketData = inventoryData.pocket;
   const pocketWeight = inventoryData.weight.pocket;
   const pocketLimit = inventoryData.limit.pocket;
 
-  const handleDrop = (item, targetIndex) => {
-    moveItem("pocket", "pocket", item, targetIndex);
-  };
-
   const totalSlots = calculateTotalSlots({
     data: pocketData,
-    initialTotal: 10,
+    initialTotal: 9,
   });
-
-  const specialIndexes = [4];
 
   return (
     <div className={style.pocket}>
@@ -42,13 +37,15 @@ const Pocket = () => {
       </div>
       <div className={style.pocketSlots}>
         {Array.from({ length: totalSlots }).map((_, index) => (
-          <InventorySlot
+          <InventorySlot key={index} section="pocket" index={index} />
+        ))}
+        {Array.from({ length: 1 }).map((_, index) => (
+          <HidingPlace
             key={index}
-            item={pocketData[index]}
-            section="pocket"
-            index={index}
-            onDrop={(item) => handleDrop(item, index)}
-            specialIndexes={specialIndexes}
+            section="pocketHidingData"
+            index={50}
+            gridColumn={5}
+            gridRow={1}
           />
         ))}
       </div>

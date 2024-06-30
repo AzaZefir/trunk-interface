@@ -3,7 +3,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { InventoryContext } from "../../app/context/InventoryContext";
 import { ItemTypes } from "./../inventoryItemTypes/InventoryItemTypes";
 
-export const useInventoryDragDrop = (index, section, item, specialIndexes) => {
+export const useInventoryDragDrop = (index, section, item) => {
   const { moveItem } = useContext(InventoryContext);
 
   const [{ isDragging }, drag] = useDrag({
@@ -43,9 +43,6 @@ export const useInventoryDragDrop = (index, section, item, specialIndexes) => {
     cursor: `${item ? "pointer" : ""}`,
     opacity: isDragging ? 0.5 : 1,
     backgroundColor: isOver ? "rgba(57, 57, 57, 1)" : "transparent",
-    ...(specialIndexes?.includes(index) && {
-      backgroundColor: "rgba(201, 157, 62, 0.4)",
-    }),
   };
 
   return {

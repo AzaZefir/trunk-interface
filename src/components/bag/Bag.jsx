@@ -6,20 +6,15 @@ import InventorySlot from "../../shared/components/inventorySlot/InventorySlot";
 
 import { InventoryContext } from "../../app/context/InventoryContext";
 import { calculateTotalSlots } from "../../utils/CalculateTotalSlots";
+import HidingPlace from "../../shared/components/hiddingPlace/HidingPlace";
 
 const Bag = () => {
-  const { inventoryData, moveItem } = useContext(InventoryContext);
+  const { inventoryData } = useContext(InventoryContext);
   const bagData = inventoryData.bag;
   const bagWeight = inventoryData.weight.bag;
   const bagLimit = inventoryData.limit.bag;
 
-  const handleDrop = (item, targetIndex) => {
-    moveItem("bag", "bag", item, targetIndex);
-  };
-
-  const totalSlots = calculateTotalSlots({ data: bagData, initialTotal: 20 });
-
-  const specialIndexes = [4, 9];
+  const totalSlots = calculateTotalSlots({ data: bagData, initialTotal: 19 });
 
   return (
     <div className={style.bag}>
@@ -34,13 +29,15 @@ const Bag = () => {
       </div>
       <div className={style.bagSlots}>
         {Array.from({ length: totalSlots }).map((_, index) => (
-          <InventorySlot
+          <InventorySlot key={index} section="bag" index={index} />
+        ))}
+        {Array.from({ length: 1 }).map((_, index) => (
+          <HidingPlace
             key={index}
-            item={bagData[index]}
-            section="bag"
-            index={index}
-            onDrop={(item) => handleDrop(item, index)}
-            specialIndexes={specialIndexes}
+            section="bagHidingData"
+            index={51}
+            gridColumn={5}
+            gridRow={1}
           />
         ))}
       </div>

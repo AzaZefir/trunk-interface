@@ -22,7 +22,7 @@ export const inventoryData = [
   {
     itemId: 4,
     name: "cake",
-    quantity: 3,
+    quantity: 1,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316608/cupcake-svgrepo-com_xr58le.svg",
     width: 1,
     height: 1,
@@ -32,7 +32,7 @@ export const inventoryData = [
   {
     itemId: 5,
     name: "cherry",
-    quantity: 3,
+    quantity: 2,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316607/cherry-svgrepo-com_repiyp.svg",
     width: 1,
     height: 1,
@@ -55,7 +55,7 @@ export const bagData = [
   {
     itemId: 7,
     name: "Apple",
-    quantity: 3,
+    quantity: 2,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719313123/item_dl3n3g.svg",
     width: 1,
     height: 1,
@@ -112,7 +112,7 @@ export const trunkData = [
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316608/cupcake-svgrepo-com_xr58le.svg",
     width: 1,
     height: 1,
-    weight: 2,
+    weight: 0.5,
     type: "food",
   },
   {
@@ -122,7 +122,7 @@ export const trunkData = [
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719316607/cherry-svgrepo-com_repiyp.svg",
     width: 1,
     height: 1,
-    weight: 2,
+    weight: 0.5,
     type: "food",
   },
   {

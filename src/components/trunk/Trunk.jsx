@@ -7,18 +7,13 @@ import InventoryCloseBtn from "../../shared/components/inventoryCloseBtn/Invento
 
 import { InventoryContext } from "../../app/context/InventoryContext";
 import { calculateTotalSlots } from "./../../utils/CalculateTotalSlots";
+import HidingPlace from "../../shared/components/hiddingPlace/HidingPlace";
 
 const Trunk = () => {
-  const { inventoryData, moveItem, unlockTrunk } = useContext(InventoryContext);
+  const { inventoryData, unlockTrunk } = useContext(InventoryContext);
   const trunkData = inventoryData.trunk;
 
-  const handleDrop = (item, targetIndex) => {
-    moveItem("trunk", "trunk", item, targetIndex);
-  };
-
-  const totalSlots = calculateTotalSlots({ data: trunkData, initialTotal: 42 });
-
-  const specialIndexes = [5];
+  const totalSlots = calculateTotalSlots({ data: trunkData, initialTotal: 40 });
 
   return (
     <div className={style.trunk}>
@@ -28,15 +23,27 @@ const Trunk = () => {
       </div>
       <div className={style.trunkSlots}>
         {Array.from({ length: totalSlots }).map((_, index) => (
-          <InventorySlot
+          <InventorySlot key={index} section="trunk" index={index} />
+        ))}
+        {Array.from({ length: 1 }).map((_, index) => (
+          <HidingPlace
             key={index}
-            item={trunkData[index]}
-            section="trunk"
-            index={index}
-            onDrop={(item) => handleDrop(item, index)}
-            specialIndexes={specialIndexes}
+            section="trunkHidingData"
+            index={52}
+            gridColumn={6}
+            gridRow={1}
           />
         ))}
+        {Array.from({ length: 1 }).map((_, index) => (
+          <HidingPlace
+            key={index}
+            section="trunkHidingData"
+            index={53}
+            gridColumn={6}
+            gridRow={2}
+          />
+        ))}
+
         <div className={style.trunkLockedSlots}>
           {inventoryData.locked && (
             <div className={style.unlockSlots}>

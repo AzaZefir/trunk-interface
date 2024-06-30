@@ -1,29 +1,29 @@
 import React, { useContext } from "react";
-
-import style from "./InventorySlot.module.scss";
-
-import { InventoryContext } from "../../../app/context/InventoryContext";
 import { useInventoryDragDrop } from "../../hooks/useInventoryDragDrop";
+import { InventoryContext } from "../../../app/context/InventoryContext";
+import style from "./HidingPlace.module.scss";
 
-const InventorySlot = ({ index, section }) => {
+const HidingPlace = ({ index, section, gridColumn, gridRow }) => {
   const { inventoryData } = useContext(InventoryContext);
   const item =
     inventoryData && inventoryData[section] && inventoryData[section][index];
 
-  const { dragRef, dropRef, slotStyle } = useInventoryDragDrop(
-    index,
-    section,
-    item,
-  );
+  const { dragRef, dropRef } = useInventoryDragDrop(index, section, item);
 
   return (
-    <div ref={dropRef} className={style.inventorySlot} style={slotStyle}>
+    <div
+      className={style.specialSlot}
+      ref={dropRef}
+      style={{
+        gridColumn: gridColumn,
+        gridRow: gridRow,
+      }}
+    >
       {item && (
         <img
           ref={dragRef}
           src={item.data}
           alt={item.name}
-          className={style.itemImage}
           style={{
             width: `${
               item?.width !== 2 && item?.height !== 2
@@ -45,4 +45,4 @@ const InventorySlot = ({ index, section }) => {
   );
 };
 
-export default InventorySlot;
+export default HidingPlace;
