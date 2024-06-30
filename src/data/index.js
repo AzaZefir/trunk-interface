@@ -94,7 +94,7 @@ export const bagData = [
   },
   {
     itemId: 11,
-    name: "Gun",
+    name: "pngwing",
     quantity: 1,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719331871/pngwing.com_1_srbpgs.svg",
     width: 2,
@@ -140,7 +140,7 @@ export const bagData = [
     width: 1,
     height: 1,
     weight: 0.2,
-    type: "steelArms",
+    type: "food",
   },
   {
     itemId: 16,
@@ -150,17 +150,7 @@ export const bagData = [
     width: 1,
     height: 1,
     weight: 0.5,
-    type: "steelArms",
-  },
-  {
-    itemId: 17,
-    name: "rifle-gun",
-    quantity: 1,
-    data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719745426/machine-gun-gun-svgrepo-com_tor47b.svg",
-    width: 2,
-    height: 1,
-    weight: 3.5,
-    type: "steelArms",
+    type: "food",
   },
   {
     itemId: 18,
@@ -200,7 +190,7 @@ export const bagData = [
     width: 1,
     height: 1,
     weight: 0.3,
-    type: "steelArms",
+    type: "food",
   },
 ];
 
@@ -253,7 +243,7 @@ export const trunkData = [
     width: 1,
     height: 2,
     weight: 3,
-    type: "food",
+    type: "steelArms",
   },
   {
     itemId: 27,
@@ -263,7 +253,7 @@ export const trunkData = [
     width: 1,
     height: 1,
     weight: 0.5,
-    type: "food",
+    type: "steelArms",
   },
   {
     itemId: 28,
@@ -273,7 +263,7 @@ export const trunkData = [
     width: 1,
     height: 1,
     weight: 0.5,
-    type: "food",
+    type: "steelArms",
   },
   {
     itemId: 29,
@@ -283,17 +273,17 @@ export const trunkData = [
     width: 1,
     height: 1,
     weight: 0.5,
-    type: "food",
+    type: "steelArms",
   },
   {
     itemId: 30,
-    name: "gun",
+    name: "gun2",
     quantity: 1,
     data: "https://res.cloudinary.com/drdqjr8r6/image/upload/v1719745023/gun-svgrepo-com_cvfd4t.svg",
     width: 1,
     height: 1,
     weight: 0.5,
-    type: "food",
+    type: "steelArms",
   },
   {
     itemId: 31,
@@ -313,6 +303,6 @@ export const trunkData = [
     width: 2,
     height: 1,
     weight: 3.5,
-    type: "food",
+    type: "steelArms",
   },
 ];

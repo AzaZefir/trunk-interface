@@ -92,7 +92,22 @@ export const InventoryProvider = ({ children }) => {
         }
       }
 
+      const previousTargetItem = targetData[targetIndex - 1]; // Предмет на предыдущем индексе
       if (
+        sourceItem.width === 2 &&
+        (targetIndex === 2 ||
+          targetIndex === 3 ||
+          targetIndex === 4 ||
+          targetIndex === 5 ||
+          targetIndex === 6 ||
+          targetIndex === 7 ||
+          targetIndex === 8) &&
+        previousTargetItem
+      ) {
+        // Меняем местами предмет с шириной 2 и предмет на индексе 2
+        sourceData[sourceIndex] = previousTargetItem;
+        targetData[targetIndex - 1] = sourceItem;
+      } else if (
         targetItem &&
         sourceIndex !== -1 &&
         targetItem.name !== sourceItem.name
