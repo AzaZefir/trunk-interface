@@ -22,7 +22,7 @@ export const InventoryProvider = ({ children }) => {
       bag: 0,
     },
     limit: {
-      trunk: 30,
+      trunk: 50,
       pocket: 8,
       bag: 25,
     },
