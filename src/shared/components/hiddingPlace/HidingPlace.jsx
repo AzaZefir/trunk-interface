@@ -36,7 +36,7 @@ const HidingPlace = ({ index, section, gridColumn, gridRow }) => {
         />
       )}
       <span className={style.inventoryQtyChange}>
-        {item ? `x${item?.quantity}` : ""}
+        {item ? (item?.quantity !== 1 ? `x${item?.quantity}` : "") : ""}
       </span>
       <span className={style.inventoryWeight}>
         {item ? `${(item?.weight * item?.quantity).toFixed(1)}` : ""}

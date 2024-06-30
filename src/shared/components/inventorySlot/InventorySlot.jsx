@@ -13,7 +13,7 @@ const InventorySlot = ({ index, section }) => {
   const { dragRef, dropRef, slotStyle } = useInventoryDragDrop(
     index,
     section,
-    item,
+    item
   );
 
   return (
@@ -36,7 +36,7 @@ const InventorySlot = ({ index, section }) => {
         />
       )}
       <span className={style.inventoryQtyChange}>
-        {item ? `x${item?.quantity}` : ""}
+        {item ? (item?.quantity !== 1 ? `x${item?.quantity}` : "") : ""}
       </span>
       <span className={style.inventoryWeight}>
         {item ? `${(item?.weight * item?.quantity).toFixed(1)}` : ""}
