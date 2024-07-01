@@ -1,6 +1,8 @@
 # React + Vite. Inventory Management System.
 
 Этот проект представляет собой интерфейс системы управления багажником на базе React с реализацией функции drag-and-drop для управления предметами в различных секциях.
+Задание размещено на gh-pages по
+адрресу : [GitHub Pages](https://azazefir.github.io/trunk-interface/).
 
 ![app](https://res.cloudinary.com/drdqjr8r6/image/upload/v1719754159/gta_cqgefm.jpg)
 
