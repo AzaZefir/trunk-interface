@@ -71,22 +71,6 @@ export const InventoryProvider = ({ children }) => {
         (invItem) => invItem?.itemId === item.itemId
       );
 
-      const newWeight = updatedData.weight[target] + (item.weight || 0);
-      if (newWeight > updatedData.limit[target]) {
-        return {
-          ...prevData,
-          weightError: {
-            ...prevData.weightError,
-            [target]: "Вес превышен!",
-          },
-        };
-      }
-
-      updatedData.weightError = {
-        ...updatedData.weightError,
-        [target]: "",
-      };
-
       // Если в целевой ячейке уже есть предмет, меняем их местами
       const targetItem = targetData[targetIndex];
 
@@ -133,6 +117,22 @@ export const InventoryProvider = ({ children }) => {
       } else {
         // Проверка веса при перемещении между секциями
         if (source !== target) {
+          const newWeight = updatedData.weight[target] + (item.weight || 0);
+          if (newWeight > updatedData.limit[target]) {
+            return {
+              ...prevData,
+              weightError: {
+                ...prevData.weightError,
+                [target]: "Вес превышен!",
+              },
+            };
+          }
+
+          updatedData.weightError = {
+            ...updatedData.weightError,
+            [target]: "",
+          };
+
           // Логика для перемещения между разными секциями
           if (sourceItem.quantity > 1) {
             sourceItem.quantity -= 1;
