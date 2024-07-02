@@ -103,7 +103,6 @@ export const InventoryProvider = ({ children }) => {
       }
 
       const previousTargetItem = targetData[targetIndex - 1]; // Предмет на предыдущем индексе
-      const nextTargetItem = targetData[targetIndex + 1]; // Предмет на след индексе
       if (
         sourceItem.width === 2 &&
         (targetIndex === 2 ||
