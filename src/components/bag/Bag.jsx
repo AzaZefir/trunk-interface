@@ -20,7 +20,12 @@ const Bag = () => {
     <div className={style.bag}>
       <div className={style.bagHeader}>
         <h2>Портфель</h2>
-        <p className={style.weightInfo}>
+        <p
+          className={style.weightInfo}
+          style={{
+            color: `${inventoryData.weightError.bag ? "salmon" : ""}`,
+          }}
+        >
           {bagWeight.toFixed(1)}/{bagLimit} кг
           <span className={style.errorText}>
             {inventoryData.weightError.bag}
