@@ -1,14 +1,20 @@
-export const checkHidingPlaceWeight = (target, item, targetData) => {
+export const checkHidingPlaceWeight = (
+  target,
+  item,
+  targetData,
+  targetItem
+) => {
   const hidingPlaceWeight = targetData.reduce(
     (total, invItem) =>
       total + (invItem?.weight || 0) * (invItem?.quantity || 1),
     0
   );
-  
+
   if (
     target === "pocketHidingData" ||
     target === "bagHidingData" ||
-    target === "trunkHidingData"
+    target === "trunkHidingData" ||
+    (targetItem && targetItem.weight * targetItem.quantity > 0.5)
   ) {
     const newHidingPlaceWeight = hidingPlaceWeight + (item.weight || 0);
 

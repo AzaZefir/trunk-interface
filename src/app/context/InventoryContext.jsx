@@ -74,6 +74,11 @@ export const InventoryProvider = ({ children }) => {
       );
       const targetItem = targetData[targetIndex];
 
+      // Проверка веса для тайника
+      if (!checkHidingPlaceWeight(target, item, targetData, targetItem)) {
+        return prevData;
+      }
+
       // Проверка веса при перемещении между секциями
       if (source !== target) {
         const { weightError, isValid } = weightLimitCheck(
@@ -96,11 +101,6 @@ export const InventoryProvider = ({ children }) => {
         ...updatedData.weightError,
         [target]: "",
       };
-
-      // Проверка веса для тайника
-      if (!checkHidingPlaceWeight(target, item, targetData)) {
-        return prevData;
-      }
 
       const previousTargetItem = targetData[targetIndex - 1]; // Предмет на предыдущем индексе
       if (
