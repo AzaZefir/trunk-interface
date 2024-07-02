@@ -63,19 +63,20 @@ export const InventoryProvider = ({ children }) => {
       const sourceIndex = sourceData.findIndex(
         (invItem) => invItem?.itemId === item.itemId
       );
-
-      if (sourceIndex === -1) {
-        return prevData; // Предмет не найден в исходной секции
-      }
-
       const sourceItem = sourceData[sourceIndex];
       const targetItemIndex = targetData.findIndex(
         (invItem) => invItem?.itemId === item.itemId
       );
       const targetItem = targetData[targetIndex];
 
+      if (sourceIndex === -1) {
+        return prevData; // Предмет не найден в исходной секции
+      }
+
       // Проверка веса для тайника
-      if (!checkHidingPlaceWeight(target, item, targetData, targetItem)) {
+      if (
+        !checkHidingPlaceWeight(target, item, targetData, targetItem, source)
+      ) {
         return prevData;
       }
 
