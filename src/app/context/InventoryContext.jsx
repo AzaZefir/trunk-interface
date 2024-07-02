@@ -5,6 +5,8 @@ import {
   trunkData,
 } from "../../data/index";
 import { calculateWeight } from "../../utils/CalculateWeight";
+import { weightLimitCheck } from "../../utils/WeightLimitCheck";
+import { checkHidingPlaceWeight } from "../../utils/CheckHidingPlaceWeight";
 
 export const InventoryContext = createContext();
 
@@ -70,54 +72,42 @@ export const InventoryProvider = ({ children }) => {
       const targetItemIndex = targetData.findIndex(
         (invItem) => invItem?.itemId === item.itemId
       );
+      const targetItem = targetData[targetIndex];
 
       // Проверка веса при перемещении между секциями
       if (source !== target) {
-        const newWeight = updatedData.weight[target] + (item.weight || 0);
-        if (newWeight > updatedData.limit[target]) {
+        const { weightError, isValid } = weightLimitCheck(
+          source,
+          target,
+          item,
+          targetItem,
+          updatedData
+        );
+        if (!isValid) {
           return {
             ...prevData,
-            weightError: {
-              ...prevData.weightError,
-              [target]: "Вес превышен!",
-            },
+            weightError,
           };
         }
-
-        updatedData.weightError = {
-          ...updatedData.weightError,
-          [target]: "",
-        };
+        updatedData.weightError = weightError;
       }
 
-      // Если в целевой ячейке уже есть предмет, меняем их местами
-      const targetItem = targetData[targetIndex];
+      updatedData.weightError = {
+        ...updatedData.weightError,
+        [target]: "",
+      };
 
-      const hidingPlaceWeight = targetData.reduce(
-        (total, invItem) => total + (invItem?.weight || 0),
-        0
-      );
-
-      if (
-        target === "pocketHidingData" ||
-        target === "bagHidingData" ||
-        target === "trunkHidingData"
-      ) {
-        const newHidingPlaceWeight = hidingPlaceWeight + (item.weight || 0);
-
-        if (newHidingPlaceWeight > 0.5) {
-          alert("В тайник можно положить предметы суммарно не более 0.5кг!");
-          return prevData;
-        }
+      // Проверка веса для тайника
+      if (!checkHidingPlaceWeight(target, item, targetData)) {
+        return prevData;
       }
 
       const previousTargetItem = targetData[targetIndex - 1]; // Предмет на предыдущем индексе
+      const nextTargetItem = targetData[targetIndex + 1]; // Предмет на след индексе
       if (
         sourceItem.width === 2 &&
         (targetIndex === 2 ||
           targetIndex === 3 ||
-          targetIndex === 4 ||
-          targetIndex === 5 ||
           targetIndex === 6 ||
           targetIndex === 7 ||
           targetIndex === 8) &&
