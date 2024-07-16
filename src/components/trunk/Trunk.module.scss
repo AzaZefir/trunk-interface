@@ -16,7 +16,7 @@ $gold: rgba(201, 157, 62, 1);
   .trunkSlots {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(6, 80px); 
+    grid-template-columns: repeat(6, 60px); 
     .trunkLockedSlots {
       @include dflex;
       .unlockSlots {

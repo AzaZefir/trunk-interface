@@ -37,8 +37,8 @@ export const useInventoryDragDrop = (index, section, item) => {
 
   const slotStyle = {
     gridColumnEnd: `span ${item?.width || 1}`,
-    width: `${item?.width === 2 ? "160px" : "80px"}`,
-    height: `${item?.height === 2 ? "160px" : "80px"}`,
+    width: `${item?.width === 2 ? "120px" : "60px"}`,
+    height: `${item?.height === 2 ? "120px" : "60px"}`,
     gridRowEnd: `span ${item?.height || 1}`,
     cursor: `${item ? "pointer" : ""}`,
     opacity: isDragging ? 0.5 : 1,

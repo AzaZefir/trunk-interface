@@ -9,7 +9,7 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 11px;
+  font-size: 9px;
   line-height: 17.58px;
   text-align: left;
 }
@@ -27,12 +27,12 @@
 
   .inventoryQtyChange {
     @include qtyStyle;
-    top: 5px;
-    right: 5px;
+    top: -2px;
+    right: 2px;
   }
   .inventoryWeight {
     @include qtyStyle;
-    bottom: 5px;
-    right: 5px;
+    bottom: -2px;
+    right: 2px;
   }
 }

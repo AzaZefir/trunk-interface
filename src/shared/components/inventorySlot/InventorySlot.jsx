@@ -29,7 +29,7 @@ const InventorySlot = ({ index, section }) => {
               item?.width !== 2 && item?.height !== 2
                 ? "35px"
                 : item?.height === 2
-                ? "60px"
+                ? "40px"
                 : ""
             }`,
           }}

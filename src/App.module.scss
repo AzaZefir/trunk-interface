@@ -17,15 +17,14 @@ $white: rgba(255, 255, 255, 1);
 h2 {
   @include fonts-weight-700;
   margin: 0;
-  font-size: 30px;
-  line-height: 48.41px;
+  font-size: 25px;
   color: $gold;
 }
 
 p {
   @include fonts-weight-700;
   margin: 0;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 36.31px;
   color: $grey;
 }

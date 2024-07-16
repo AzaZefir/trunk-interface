@@ -9,11 +9,11 @@
   height: 100%;
   .inventoryGridWrapper {
     display: grid;
-    grid-template-columns: 400px 480px;
+    grid-template-columns: 300px 360px;
     grid-template-areas:
       "pocket trunk"
       "bag trunk";
-    column-gap: 120px;
+    column-gap: 100px;
     row-gap: 30px;
   }
 }
