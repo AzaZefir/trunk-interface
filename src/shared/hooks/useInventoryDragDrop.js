@@ -39,7 +39,7 @@ export const useInventoryDragDrop = (index, section, item) => {
     cursor: `${item ? "pointer" : ""}`,
     opacity: isDragging ? 0.5 : 1,
     overflow: "hidden",
-    backgroundColor: isOver ? "rgba(57, 57, 57, 1)" : "transparent",
+    backgroundColor: isOver ? "rgba(57, 57, 57, 1)" : "rgba(22, 22, 22, 0.76)",
     position: `${
       (item?.width === 2 && item?.isFirstCopy) || item?.height === 2
         ? "relative"
