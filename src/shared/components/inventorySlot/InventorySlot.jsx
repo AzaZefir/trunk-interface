@@ -32,6 +32,14 @@ const InventorySlot = ({ index, section }) => {
                 ? "40px"
                 : ""
             }`,
+            display: `${
+              (item.width === 2 &&
+                !item.isFirstCopy) ||
+              (item.height === 2 &&
+                !item.isFirstCopy)
+                ? "none"
+                : ""
+            }`,
           }}
         />
       )}

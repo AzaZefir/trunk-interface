@@ -13,10 +13,14 @@ $gold: rgba(201, 157, 62, 1);
     justify-content: space-between;
     margin-bottom: 5px;
   }
-  .trunkSlots {
+  .trunkWrapper {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(6, 60px); 
+    .trunkSlots {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 60px);
+      grid-auto-rows: 60px;
+    }
     .trunkLockedSlots {
       @include dflex;
       .unlockSlots {
@@ -35,5 +39,4 @@ $gold: rgba(201, 157, 62, 1);
       }
     }
   }
-  
 }

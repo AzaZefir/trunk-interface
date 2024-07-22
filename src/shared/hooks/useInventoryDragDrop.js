@@ -36,13 +36,23 @@ export const useInventoryDragDrop = (index, section, item) => {
   });
 
   const slotStyle = {
-    gridColumnEnd: `span ${item?.width || 1}`,
-    width: `${item?.width === 2 ? "120px" : "60px"}`,
-    height: `${item?.height === 2 ? "120px" : "60px"}`,
-    gridRowEnd: `span ${item?.height || 1}`,
     cursor: `${item ? "pointer" : ""}`,
     opacity: isDragging ? 0.5 : 1,
+    overflow: "hidden",
     backgroundColor: isOver ? "rgba(57, 57, 57, 1)" : "transparent",
+    position: `${
+      (item?.width === 2 && item?.isFirstCopy) || item?.height === 2
+        ? "relative"
+        : ""
+    }`,
+    zIndex: `${
+      (item?.width === 2 && item?.isFirstCopy) ||
+      (item?.height === 2 && item?.isFirstCopy)
+        ? "1"
+        : ""
+    }`,
+    width: `${item?.width === 2 && item?.isFirstCopy ? "120px" : "60px"}`,
+    height: `${item?.height === 2 && item?.isFirstCopy ? "120px" : "60px"}`,
   };
 
   return {

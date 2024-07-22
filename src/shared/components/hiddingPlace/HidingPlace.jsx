@@ -3,10 +3,9 @@ import { useInventoryDragDrop } from "../../hooks/useInventoryDragDrop";
 import { InventoryContext } from "../../../app/context/InventoryContext";
 import style from "./HidingPlace.module.scss";
 
-const HidingPlace = ({ index, section, gridColumn, gridRow }) => {
+const HidingPlace = ({ index, section }) => {
   const { inventoryData } = useContext(InventoryContext);
-  const item =
-    inventoryData && inventoryData[section] && inventoryData[section][index];
+  const item = inventoryData?.[section]?.[index] || null;
 
   const { dragRef, dropRef } = useInventoryDragDrop(index, section, item);
 
@@ -14,10 +13,6 @@ const HidingPlace = ({ index, section, gridColumn, gridRow }) => {
     <div
       className={style.specialSlot}
       ref={dropRef}
-      style={{
-        gridColumn: gridColumn,
-        gridRow: gridRow,
-      }}
     >
       {item && (
         <img
@@ -36,7 +31,7 @@ const HidingPlace = ({ index, section, gridColumn, gridRow }) => {
         />
       )}
       <span className={style.inventoryQtyChange}>
-        {item ? (item?.quantity !== 1 ? `x${item?.quantity}` : "") : ""}
+        {item ? (item?.quantity !== 1 ? `x${item?.quantity}` : "") : ''}
       </span>
       <span className={style.inventoryWeight}>
         {item ? `${(item?.weight * item?.quantity).toFixed(1)}` : ""}
