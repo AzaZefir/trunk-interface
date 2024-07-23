@@ -23,9 +23,6 @@ const Bag = () => {
           }}
         >
           {bagWeight.toFixed(1)}/{bagLimit} кг
-          <span className={style.errorText}>
-            {inventoryData.weightError.bag}
-          </span>
         </p>
       </div>
       <div className={style.bagSlots}>

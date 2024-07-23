@@ -23,9 +23,6 @@ const Pocket = () => {
           }}
         >
           {pocketWeight.toFixed(1)}/{pocketLimit} кг
-          <span className={style.errorText}>
-            {inventoryData.weightError.pocket}
-          </span>
         </p>
       </div>
       <div className={style.pocketSlots}>
