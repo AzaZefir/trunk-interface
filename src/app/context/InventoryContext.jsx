@@ -40,6 +40,10 @@ export const InventoryProvider = ({ children }) => {
     },
   });
 
+  const [isBagHidenPlaceOverweight, setIsBagHidenPlaceOverweight] = useState(false)
+  const [isPocketHidenPlaceOverweight, setIsPocketHidenPlaceOverweight] = useState(false)
+  const [isTrunkHidenPlaceOverweight, setIsTrunkHidenPlaceOverweight] = useState(false)
+
   useEffect(() => {
     setInventoryData((prevData) => ({
       ...prevData,
@@ -79,7 +83,16 @@ export const InventoryProvider = ({ children }) => {
 
       // Проверка веса для тайника
       if (
-        !checkHidingPlaceWeight(target, item, targetData, targetItem, source)
+        !checkHidingPlaceWeight(
+          target,
+          item,
+          targetData,
+          targetItem,
+          source,
+          setIsPocketHidenPlaceOverweight,
+          setIsBagHidenPlaceOverweight,
+          setIsTrunkHidenPlaceOverweight
+        )
       ) {
         return prevData;
       }
@@ -328,7 +341,19 @@ export const InventoryProvider = ({ children }) => {
   }
 
   return (
-    <InventoryContext.Provider value={{ inventoryData, moveItem, unlockTrunk }}>
+    <InventoryContext.Provider
+      value={{
+        inventoryData,
+        moveItem,
+        unlockTrunk,
+        isBagHidenPlaceOverweight,
+        isPocketHidenPlaceOverweight,
+        isTrunkHidenPlaceOverweight,
+        setIsBagHidenPlaceOverweight,
+        setIsPocketHidenPlaceOverweight,
+        setIsTrunkHidenPlaceOverweight,
+      }}
+    >
       {children}
     </InventoryContext.Provider>
   );
