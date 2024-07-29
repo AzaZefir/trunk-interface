@@ -30,6 +30,7 @@ export const handleMoveHeight2 = (
   targetData[targetIndex] = { ...item, isFirstCopy: true };
   targetData[targetItemBelowIndex] = {
     ...item,
+    quantity: 0,
     isCopy: true,
     isFirstCopy: false,
   };
@@ -52,6 +53,7 @@ export const handleMoveWidth2 = (
   targetData[targetIndex] = { ...item, isFirstCopy: true };
   targetData[targetIndex + 1] = {
     ...item,
+    quantity: 0,
     isCopy: true,
     isFirstCopy: false,
   };

@@ -40,9 +40,12 @@ export const InventoryProvider = ({ children }) => {
     },
   });
 
-  const [isBagHidenPlaceOverweight, setIsBagHidenPlaceOverweight] = useState(false)
-  const [isPocketHidenPlaceOverweight, setIsPocketHidenPlaceOverweight] = useState(false)
-  const [isTrunkHidenPlaceOverweight, setIsTrunkHidenPlaceOverweight] = useState(false)
+  const [isBagHidenPlaceOverweight, setIsBagHidenPlaceOverweight] =
+    useState(false);
+  const [isPocketHidenPlaceOverweight, setIsPocketHidenPlaceOverweight] =
+    useState(false);
+  const [isTrunkHidenPlaceOverweight, setIsTrunkHidenPlaceOverweight] =
+    useState(false);
 
   useEffect(() => {
     setInventoryData((prevData) => ({
@@ -297,6 +300,7 @@ export const InventoryProvider = ({ children }) => {
           if (currentIndex + 1 < items.length) {
             items[currentIndex + 1] = {
               ...item,
+              quantity: 0,
               isCopy: true,
               isFirstCopy: false,
             };
@@ -317,6 +321,7 @@ export const InventoryProvider = ({ children }) => {
           if (currentIndex + sourceTrunk < items.length) {
             items[currentIndex + sourceTrunk] = {
               ...item,
+              quantity: 0,
               isCopy: true,
               isFirstCopy: false,
             };
