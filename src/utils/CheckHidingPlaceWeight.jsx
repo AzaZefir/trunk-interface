@@ -26,11 +26,25 @@ export const checkHidingPlaceWeight = (
     const newHidingPlaceWeight = hidingPlaceWeight + (item.weight || 0);
 
     if (newHidingPlaceWeight > 0.5) {
-      if (target === "pocketHidingData") {
+      if (
+        target === "pocketHidingData" ||
+        (target === "pocket" && source !== "bagHidingData") ||
+        (target === "bag" && source === "pocketHidingData")
+      ) {
         setIsPocketHidenPlaceOverweight(true);
-      } else if (target === "bagHidingData") {
+      } else if (
+        target === "bagHidingData" ||
+        target === "bag" ||
+        (target === "trunk" && source !== "bagHidingData") ||
+        (target === "pocket" && source === "bagHidingData")
+      ) {
         setIsBagHidenPlaceOverweight(true);
-      } else if (target === "trunkHidingData") {
+      } else if (
+        target === "trunkHidingData" ||
+        target === "bag" ||
+        target === "pocket" ||
+        (target === "trunk" && source === "trunkHidingData")
+      ) {
         setIsTrunkHidenPlaceOverweight(true);
       }
       return false;
