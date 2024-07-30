@@ -28,6 +28,7 @@ export const checkHidingPlaceWeight = (
     if (newHidingPlaceWeight > 0.5) {
       if (
         target === "pocketHidingData" ||
+        (target === "trunk" && source === "pocketHidingData") ||
         (target === "pocket" && source !== "bagHidingData") ||
         (target === "bag" && source === "pocketHidingData")
       ) {
@@ -35,7 +36,7 @@ export const checkHidingPlaceWeight = (
       } else if (
         target === "bagHidingData" ||
         target === "bag" ||
-        (target === "trunk" && source !== "bagHidingData") ||
+        (target === "trunk" && source === "bagHidingData") ||
         (target === "pocket" && source === "bagHidingData")
       ) {
         setIsBagHidenPlaceOverweight(true);
